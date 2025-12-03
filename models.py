@@ -3,8 +3,8 @@ from datetime import datetime
 
 class Product:
     """Represents a single product in the catalog."""
-    def __init__(self, product_id, name, price, rating):
-        self.id = str(product_id)
+    def __init__(self, id, name, price, rating):
+        self.id = str(id)
         self.name = name
         self.price = price  # Used for sorting (ascending)
         self.rating = rating  # Used for sorting (descending)

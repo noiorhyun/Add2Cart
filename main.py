@@ -172,8 +172,7 @@ def checkout():
     order_queue.append(new_order)
     
     # Reset the cart
-    global shopping_cart
-    shopping_cart = {} 
+    shopping_cart.clear() 
     
     print("\n--------------------------------")
     print(f"✅ CHECKOUT SUCCESSFUL!")
