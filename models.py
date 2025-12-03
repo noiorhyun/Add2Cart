@@ -1,19 +1,26 @@
+import uuid
+from datetime import datetime
+
 class Product:
-    def __init__(self, id, name, price, rating):
-        self.id = id
+    """Represents a single product in the catalog."""
+    def __init__(self, product_id, name, price, rating):
+        self.id = str(product_id)
         self.name = name
-        self.price = price
-        self.rating = rating
+        self.price = price  # Used for sorting (ascending)
+        self.rating = rating  # Used for sorting (descending)
     
     def __repr__(self):
-        return f"{self.id} | {self.name} | ${self.price:.2f} | ⭐ {self.rating}"
+        return f"Product(ID:{self.id}, Name:'{self.name}', Price:${self.price:.2f}, Rating:{self.rating})"
 
 class Order:
-    def __init__(self, order_id, items):
-        self.order_id = order_id
+    """Represents a submitted order ready for processing."""
+    def __init__(self, items, total_cost):
+        self.order_id = str(uuid.uuid4())[:8].upper() # Generate a short unique ID
         self.items = items
-        self.total_price = sum(p.price for p in items)
+        self.total_cost = total_cost
+        self.timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     def __repr__(self):
-        item_names = ", ".join(p.name for p in self.items)
-        return f"Order #{self.order_id}: {item_names} | Total: ${self.total_price:.2f}"
+        return (f"Order(ID:{self.order_id}, Total:${self.total_cost:.2f}, "
+                f"Items:{len(self.items)} distinct products, Time:{self.timestamp})")
+    
