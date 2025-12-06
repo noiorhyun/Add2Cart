@@ -28,7 +28,7 @@ def view_cart():
     print("\n--- Shopping Cart ---")
     if not shopping_cart:
         print("Your cart is empty.")
-        return
+        return [], 0.0
     
     total_cost = 0
     print(f"{'ID':<4} {'Name':<25} {'Qty':<4} {'Price':<8} {'Subtotal':<8}")
@@ -159,9 +159,10 @@ def search_products():
 
 def checkout():
     """Creates an Order object and enqueues it."""
+    global order_queue
     items_list, total_cost = view_cart()
     
-    if not shopping_cart:
+    if not items_list:   # cart effectively empty
         print("\nCheckout Failed: Your cart is empty.")
         return
         

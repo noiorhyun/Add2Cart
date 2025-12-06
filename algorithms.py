@@ -2,7 +2,6 @@
 def quicksort(data, key, reverse=False):
     """
     Sorts a list of dictionaries/objects recursively based on a specified key.
-    
     :param data: List of objects (e.g., Product objects) to be sorted.
     :param key: The attribute/field to sort by ('price' or 'rating').
     :param reverse: True for descending (e.g., rating), False for ascending (e.g., price).
